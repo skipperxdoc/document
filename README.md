@@ -1,5 +1,59 @@
-# SkipperX SDK 接入指南
+# SkipperX SDK入门指南
+欢迎您选择SkipperX SDK对接合作，这篇文档将指引您如何操作开发者后台并对接我们的SDK开始您的广告变现，如果您有任何问题请联系您的客户经理。
+### 创建账号
+请联系您的客户经理为您创建SkipperX 开发者账号。
+### 创建APP和广告位
+1. 进入开发者后台后，您需要先为您的账号创建APP/Site及其Placement.
+![Alt text](./1625039769355.png)
+2. 进入新建弹窗，输入您APP的相关信息, 填写的字段释义如下
 
+![Alt text](./1625039805511.png)
+
+> Type: 流量类型是APP流量还是Web Site流量；
+> Platform：APP的系统平台，是Android还是IOS，如果是Windows之类的请选择其他；
+> Bundle：APP的包名；（如果您的Android APP已上架，填写包名后点击Look up，将自动填充Store URL和APP Category）
+> Store URL：APP上架商店的详情页链接；
+> Domain：Site的域名；
+> App Categroy：APP的分类；
+> Is app published：您的APP是否已上架；
+> Status：APP/Site的状态，如果状态为关，其Appid和token将不再生效；
+> COPPA：如果您的APP/Site遵守COPPA，请勾选上；
+> TOKEN和Appid：为对接SDK时的验证密钥，新建APP后，自动生成。
+
+3. 完成APP/Site的填写后，保存继续为其创建广告位，填写的字段释义如下
+![Alt text](./1625039892574.png)
+
+> App/Site：当前创建广告位的归属，一个App/Site可以拥有多个广告位；
+> Name：广告位的名称，一般可以命名为"APPNAME_TYPE_SIZE"；
+> Bid Floor：广告位的底价，只有高于这个底价的广告才会填充；
+> Placement Type：广告位类型，Banner, Native, Interstitial, Rewarded Ad；
+> Size：广告位尺寸；
+> Allowed Ad Type：支持填充的广告类型；Display(HTML), Static, VAST Video, Playable；
+> Refresh Time：Banner广告自动刷新时间；
+> Muting：视频广告是否默认静音；
+> Allow Skip：允许跳过的时间，单位为秒；
+> CTA Popup：是否在视频播放过程中弹出CTA按钮，一般能够提升CTR，但是可能遮罩视频元素；
+> Status：广告位状态，状态为关时，广告位将不再请求广告；
+
+### 集成SkipperX SDK
+保存广告位后，就可以进入集成SDK的环节。SkipperX SDK支持Android，IOS，Unity, Cocos。同时如果您对接了Mopub聚合SDK，我们也只支持Mopub JS Tag作为自定义网盟接入。如果你是Site流量，也可以直接部署我们的JS Tag
+![Alt text](./1625039985752.png)
+
+### 报表说明
+跑出数据后，可以通过报表查看收益数据情况，以下是维度指标的说明
+![Alt text](./1620989538211.png)
+
+> 维度
+> Date：日期
+> App/Site：APP或者是Site
+> Placement：广告位
+> Country：国家
+> 指标
+> Impression：广告展示
+> Clicks：广告点击
+> CTR：广告点击率，Clicks/Impression
+> eCPM：每千次展示单价，Revenue/Impression*1000
+> Revenue：广告收益
 # Android SDK
 ### 添加依赖和初始化
 添加依赖
@@ -37,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
 ```
 
 初始化SDK时，需要传入APP的appid和token，这两个值可以在你的账户后台Placement管理页面中找到
- ![Alt text](./flat_image/1621243376897.png)
+![Alt text](./1625040337695.png)
 
 
 ### 广告位类型
