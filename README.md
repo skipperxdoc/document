@@ -60,7 +60,7 @@
 
 ```
 dependencies {
-
+      implementation 'com.skipperx.sdk:skipper:1.0.0'
 }
 
 //
@@ -229,9 +229,9 @@ public class MainActivity extends AppCompatActivity {
         String adUnitId = "xxxxxxxxx";
 
         NativeAd nativeAd = new NativeAd(adUnitId, this);
-        NativeAdLoadListener nativeAdLoadListener = new NativeAdLoadListener() {
+        AdLoadListener nativeAdLoadListener = new AdLoadListener() {
                     @Override
-                    public void onAdSucLoad(NativeData nativeData) {
+                    public void onAdSucLoad(AdContent nativeData) {
                         FrameLayout frameLayout = findViewById(R.id.my_content);
                         adView = (NativeAdLayout) getLayoutInflater().inflate(R.layout.native_big_static, null);
                         adView.setTitle(adView.findViewById(R.id.ad_tv_title));
@@ -256,9 +256,9 @@ public class MainActivity extends AppCompatActivity {
 
                             }
                         });
-                        nativeAd.setNativeAdLayout(adView);
                         frameLayout.removeAllViews();
                         frameLayout.addView(adView);
+                        adView.show(nativeData)
                     }
 
                     @Override
@@ -295,16 +295,16 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 ```
-布局元素获取必须在成功的时候绑定，处理完布局后需要调用setNativeAdLayout方法展示广告，否则无反应。
+布局元素获取必须在成功的时候绑定，处理完布局后需要调用show方法展示广告，否则无反应。
 
 由于native广告存在video类型的广告，需要在Activity生命周期中对应添加广告的生命周期回调，否则播放器可能会异常。
 
 * 广告事件
 1. 加载监听
 ```
-        setAdListener(new NativeAdLoadListener() {
+        setAdListener(new AdLoadListener() {
                     @Override
-                    public void onAdSucLoad(NativeData nativeData) {
+                    public void onAdSucLoad(AdContent nativeData) {
                        //广告加载成功
                     }
 
