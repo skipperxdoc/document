@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/ad_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="广告类型: "
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"/>
+
+    <Spinner
+        android:id="@+id/ad_text_spinner"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/ad_text"
+        app:layout_constraintStart_toEndOf="@id/ad_text"
+        app:layout_constraintBottom_toBottomOf="@id/ad_text"
+        />
+
+    <TextView
+        android:id="@+id/ad_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="unitId: "
+        app:layout_constraintTop_toBottomOf="@id/ad_text"
+        app:layout_constraintStart_toStartOf="@id/ad_text"
+        android:layout_marginTop="20dp"/>
+
+    <Spinner
+        android:id="@+id/ad_id_spinner"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/ad_id"
+        app:layout_constraintBottom_toBottomOf="@id/ad_id"
+        app:layout_constraintStart_toStartOf="@id/ad_text_spinner"/>
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/ad_id"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="16dp"/>
+
+    <Button
+        android:id="@+id/bid_btn"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/price"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
+        android:text="bid"/>
+
+    <Button
+        android:id="@+id/win"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/bid_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/lose"
+        android:text="win"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/lose"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/win"
+        app:layout_constraintStart_toEndOf="@id/win"
+        android:text="lose"/>
+
+    <Button
+        android:id="@+id/show"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/win"
+        app:layout_constraintStart_toStartOf="@id/win"
+        android:text="show_ad"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/remove"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/lose"
+        app:layout_constraintTop_toBottomOf="@id/lose"
+        android:layout_marginTop="10dp"
+        android:text="remove_ad"/>
+
+    <Button
+        android:id="@+id/no_bidding_show"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="no_bidding_load"
+        app:layout_constraintTop_toBottomOf="@id/show"
+        app:layout_constraintStart_toStartOf="@id/show"/>
+
+    <FrameLayout
+        android:id="@+id/native_ad"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:layout_constraintTop_toBottomOf="@id/show"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
