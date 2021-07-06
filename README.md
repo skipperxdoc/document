@@ -185,28 +185,96 @@ native显示样式由用户自定义，但需要调用NativeAdLayout使用做处
 </androidx.constraintlayout.widget.ConstraintLayout>
 ```
 ```
-# native_view.xml
-    ···
-    <com.skipperx.sdk.ui.NativeAdLayout
-        android:id="@+id/container"
+# native_big_static.xml
+<com.skipperx.sdk.ui.NativeAdLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ad_container"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:background="@color/white"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.skipperx.sdk.ui.MediaView
+            android:id="@+id/ad_media_big"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            ···
-            <com.skipperx.sdk.ui.MediaView
-                android:id="@+id/media"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                app:layout_constraintDimensionRatio="w,9:16"
-                app:layout_constraintTop_toTopOf="parent" />
-            ···
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="w,9:16"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </com.skipperx.sdk.ui.NativeAdLayout>
-    ···
+        <ImageView
+            android:id="@+id/ad_iv_icon"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ad_media_big" />
+
+        <TextView
+            android:id="@+id/ad_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginBottom="21dp"
+            android:background="@drawable/shape_bg"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ad_media_big"
+            tools:text="sdasdasdsa"/>
+
+        <TextView
+            android:id="@+id/ad_tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textColor="@color/text_color"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/ad_button"
+            app:layout_constraintStart_toEndOf="@id/ad_iv_icon"
+            app:layout_constraintTop_toTopOf="@id/ad_iv_icon" />
+
+        <TextView
+            android:id="@+id/ad_tv_desc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textColor="@color/text_des_color"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@id/ad_button"
+            app:layout_constraintStart_toEndOf="@id/ad_iv_icon"
+            app:layout_constraintTop_toBottomOf="@id/ad_tv_title" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.skipperx.sdk.ui.NativeAdLayout>
 ```
 MediaView需要设置宽高比例。
 
